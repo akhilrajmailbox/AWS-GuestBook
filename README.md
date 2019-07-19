@@ -20,7 +20,7 @@ aws configure
 [reference](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 
 
-## Install kubectl in aws cli
+## Install kubectl
 
 Kubernetes uses a command line utility called kubectl for communicating with the cluster API server.
 
