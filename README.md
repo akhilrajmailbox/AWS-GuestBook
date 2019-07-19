@@ -38,7 +38,7 @@ aws eks --region region update-kubeconfig --name cluster_name
 [reference](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html)
 
 
-## WOrkerNode Configuration for AWS EKS
+## WorkerNode Configuration for AWS EKS
 Add the workernodes by using Cloudformation [templates](https://amazon-eks.s3-us-west-2.amazonaws.com/cloudformation/2019-02-11/amazon-eks-nodegroup.yaml).
 
 Launch an Auto Scaling group of worker nodes that register with your Amazon EKS cluster. After the nodes join the cluster, you can deploy Kubernetes applications to them.
