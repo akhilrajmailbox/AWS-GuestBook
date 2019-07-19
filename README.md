@@ -75,7 +75,7 @@ kubectl apply -f aws-auth-cm.yaml
 
 ## Deployment Script
 
-use the guestbook.sh script under scripts folder to configure the complete setup.....!
+use the [guestbook.sh](https://raw.githubusercontent.com/akhilrajmailbox/AWS-GuestBook/master/scripts/guestbook.sh) script under scripts folder to configure the complete setup.....!
 
 ```
 ./guestbook.sh -o [options]
