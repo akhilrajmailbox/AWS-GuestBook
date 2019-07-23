@@ -114,8 +114,8 @@ Add the following entries in "/etc/hosts" file in order to resolve the domain na
 
 ### 1. What was the node size chosen for the Kubernetes nodes? And why?
 
-I choose 2 nodes (t3.medium -- 2 VCPU * 4 GB) in different zone.
-The main reason why I choose 2 worker Node for HA Configuration, ie) even one zone goes down completely, our application will serve without any issue because of the second zone.
+  I choose 2 nodes (t3.medium -- 2 VCPU * 4 GB) in different zone.
+The main reason why I choose 2 worker Node is for HA Configuration, ie) even one zone goes down completely, our application will serve without any issue because of the second zone.
 
 For 1 environment resource usage :
 frontend * 3   ==  100m * 3 = 300m
@@ -133,13 +133,13 @@ Under consideration of this auto scaling Configuration, 2 VCPU is sufficient and
 
 ### 2. What method was chosen to install the demo application and ingress controller on the cluster, justify the method used
 
-I choose default installation method (yaml file configuration and deployment with kubectl command). with help of Helm chart we can install and configure the applications and there are many preconfigured charts are available.
+  I choose default installation method (yaml file configuration and deployment with kubectl command). with help of Helm chart we can install and configure the applications and there are many preconfigured charts are available.
 But for customization and automation, as per my understanding direct installation method is better than helm installation.
 
 
 ### 3. What would be your chosen solution to monitor the application on the cluster and why?
 
-for the Kubernetes cluster monitor, I will choose Prometheus
+  For the Kubernetes cluster monitor, I will choose Prometheus
 because Prometheus is highly updated for Kubernetes monitoring and we can get end to end resource usage details about our cluster in different level such as pods, deployment, daemon-sets, replica-sets etc...
 Apart from this if any custom monitoring required and if that is a black-box monitoring, then i will configure Nagios as well.
 
