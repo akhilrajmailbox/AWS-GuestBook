@@ -112,7 +112,7 @@ Add the following entries in "/etc/hosts" file in order to resolve the domain na
 34.198.50.73    guestbook.mstakx.io
 ```
 
-1. What was the node size chosen for the Kubernetes nodes? And why?
+### 1. What was the node size chosen for the Kubernetes nodes? And why?
 
 I choose 2 nodes (t3.medium -- 2 VCPU * 4 GB) in different zone.
 The main reason why I choose 2 worker Node for HA Configuration, ie) even one zone goes down completely, our application will serve without any issue because of the second zone.
@@ -131,25 +131,25 @@ we have to configure autoscaler for both environment and I configured the autosc
 Under consideration of this auto scaling Configuration, 2 VCPU is sufficient and fair enough for this application.
 
 
-2. What method was chosen to install the demo application and ingress controller on the cluster, justify the method used
+### 2. What method was chosen to install the demo application and ingress controller on the cluster, justify the method used
 
 I choose default installation method (yaml file configuration and deployment with kubectl command). with help of Helm chart we can install and configure the applications and there are many preconfigured charts are available.
 But for customization and automation, as per my understanding direct installation method is better than helm installation.
 
 
-3. What would be your chosen solution to monitor the application on the cluster and why?
+### 3. What would be your chosen solution to monitor the application on the cluster and why?
 
 for the Kubernetes cluster monitor, I will choose Prometheus
 because Prometheus is highly updated for Kubernetes monitoring and we can get end to end resource usage details about our cluster in different level such as pods, deployment, daemon-sets, replica-sets etc...
 Apart from this if any custom monitoring required and if that is a black-box monitoring, then i will configure Nagios as well.
 
 
-4. What additional components / plugins would you install on the cluster to manage it better?
+### 4. What additional components / plugins would you install on the cluster to manage it better?
 
-Prometheus and Granada for monitoring.
-EFK (Elasticsearch, Fluentd and Kibana) for logging.
-rancher for better ui experience and marketplace application deployment.
-helm for installation of predefined applications as charts.
+  * Prometheus and Granada for monitoring.
+  * EFK (Elasticsearch, Fluentd and Kibana) for logging.
+  * rancher for better ui experience and marketplace application deployment.
+  * helm for installation of predefined applications as charts.
 
 
 
