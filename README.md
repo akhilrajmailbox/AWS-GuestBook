@@ -49,8 +49,10 @@ Launch an Auto Scaling group of worker nodes that register with your Amazon EKS 
 configure aws-auth-cm.yaml in the cluster
 
 -Important-
-*Do not modify any other lines in this file.*
 
+Replace the <ARN of instance role (not instance profile)> snippet with the NodeInstanceRole
+
+*Do not modify any other lines in this file.*
 
 ```
 apiVersion: v1
