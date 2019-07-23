@@ -91,3 +91,65 @@ use the [guestbook.sh](https://raw.githubusercontent.com/akhilrajmailbox/AWS-Gue
       * load-test            =   load test for guestbook deployment to check autoscale configuration
       * cleanup              =   delete all resources in the kubernetes which are created by this scripts for the guestbook
 ```
+
+
+
+
+## Result
+
+In AWS, we will not get the IPAddress for the loadbalacer, they will give us a domain url.
+from that domain url, we can take the IP Address
+
+example :
+```
+nslookup a7dsdac78aa3911e9b5ca12ef48a2027-1678414529.us-east-1.elb.amazonaws.com
+```
+Assume that the output for above command is "34.198.50.73"
+Add the following entries in "/etc/hosts" file in order to resolve the domain name from your lolca system.
+
+```
+34.198.50.73    staging-guestbook.mstakx.io
+34.198.50.73    guestbook.mstakx.io
+```
+
+1. What was the node size chosen for the Kubernetes nodes? And why?
+
+I choose 2 nodes (t3.medium -- 2 VCPU * 4 GB) in different zone.
+The main reason why I choose 2 worker Node for HA Configuration, ie) even one zone goes down completely, our application will serve without any issue because of the second zone.
+
+For 1 environment resource usage :
+frontend * 3   ==  100m * 3 = 300m
+redis-master   ==  100m * 1 = 100m
+redis-slave    ==  100m * 2 = 200m
+
+overall CPU Usage : 600m + 200m (Kubernetes usage) = 800m
+
+like this we have one more environment. (staging and production).
+so overall CPU usage is :: 800m * 2 = 1600m
+
+we have to configure autoscaler for both environment and I configured the autoscaler with min 3 pods and maximum 10 pods.
+Under consideration of this auto scaling Configuration, 2 VCPU is sufficient and fair enough for this application.
+
+
+2. What method was chosen to install the demo application and ingress controller on the cluster, justify the method used
+
+I choose default installation method (yaml file configuration and deployment with kubectl command). with help of Helm chart we can install and configure the applications and there are many preconfigured charts are available.
+But for customization and automation, as per my understanding direct installation method is better than helm installation.
+
+
+3. What would be your chosen solution to monitor the application on the cluster and why?
+
+for the Kubernetes cluster monitor, I will choose Prometheus
+because Prometheus is highly updated for Kubernetes monitoring and we can get end to end resource usage details about our cluster in different level such as pods, deployment, daemon-sets, replica-sets etc...
+Apart from this if any custom monitoring required and if that is a black-box monitoring, then i will configure Nagios as well.
+
+
+4. What additional components / plugins would you install on the cluster to manage it better?
+
+Prometheus and Granada for monitoring.
+EFK (Elasticsearch, Fluentd and Kibana) for logging.
+rancher for better ui experience and marketplace application deployment.
+helm for installation of predefined applications as charts.
+
+
+
