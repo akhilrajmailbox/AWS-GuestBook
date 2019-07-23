@@ -117,10 +117,12 @@ Add the following entries in "/etc/hosts" file in order to resolve the domain na
   I choose 2 nodes (t3.medium -- 2 VCPU * 4 GB) in different zone.
 The main reason why I choose 2 worker Node is for HA Configuration, ie) even one zone goes down completely, our application will serve without any issue because of the second zone.
 
-For 1 environment resource usage :
+*For 1 environment resource usage :*
+```
 frontend * 3   ==  100m * 3 = 300m
 redis-master   ==  100m * 1 = 100m
 redis-slave    ==  100m * 2 = 200m
+```
 
 overall CPU Usage : 600m + 200m (Kubernetes usage) = 800m
 
